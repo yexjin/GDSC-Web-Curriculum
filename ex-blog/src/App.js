@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Header from './components/Header';
+import UpdateForm from './pages/content/UpdateForm';
+import JoinForm from './pages/user/JoinForm';
+import LoginForm from './pages/user/LoginForm';
+import Detail from './pages/content/Detail';
+import SaveForm from './pages/content/SaveForm';
+import Home from './pages/content/Home';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Routes>
+        <Route path="/" exact={true} element={<Home/>} />
+        <Route path="/saveForm" exact={true} element={<SaveForm/>} />
+        <Route path="/post/:id" exact={true} element={<Detail/>} />
+        <Route path="/loginForm" exact={true} element={<LoginForm/>} />
+        <Route path="/joinForm" exact={true} element={<JoinForm/>} />
+        <Route path="/updateForm/:id" exact={true} element={<UpdateForm/>} />
+      </Routes>
     </div>
   );
 }
