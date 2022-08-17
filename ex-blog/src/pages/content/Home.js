@@ -1,9 +1,10 @@
 import React from 'react'
+import Posts from '../../components/Posts'
 
 function Home() {
     return (
         <div>
-            <h1>포스팅 글 보기</h1>
+            <Posts />
         </div>
     )
 }
