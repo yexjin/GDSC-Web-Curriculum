@@ -19,7 +19,7 @@ function SaveForm({props}) {
         e.preventDefault();
         fetch("http://18.191.121.226:8080/post", {
             method: "POST", 
-            header: {
+            headers: {
                 "Content-Type": "application/json; charset=utf-8"
             },
             body: JSON.stringify(post)
@@ -47,7 +47,7 @@ function SaveForm({props}) {
 
         <Form.Group className="mb-3">
             <Form.Label>Content</Form.Label>
-            <Form.Control type="text" placeholder="Enter Content" name="content"/>
+            <Form.Control type="text" placeholder="Enter Content" onChange={changeValue} name="content"/>
         </Form.Group>
       <Button variant="primary" type="submit">
         Submit
