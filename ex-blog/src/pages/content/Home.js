@@ -6,13 +6,12 @@ import { getPostsThunk } from '../../modules/reducers/postReducer'
 function Home() {
 
   const dispatch = useDispatch()
-  const posts = useSelector(state => state.post.postList.data)
+  const posts = useSelector(state => state.post.postList)
 
     useEffect(() => {
       const fetch = async () => {
           try {
             dispatch(getPostsThunk())
-            console.log(posts)
           } catch(err){
             console.log(err);
           }

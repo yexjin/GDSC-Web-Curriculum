@@ -29,12 +29,12 @@ const postSlice = createSlice({
       [getPostsThunk.fulfilled]: (state, action) => ({
         ...state,
         loading: false,
-        postList: action.payload,
+        postList: action.payload.data,
       }),
       [getPostsThunk.rejected]: (state, action) => ({
         ...state,
         loading: false,
-        error: action.payload,
+        error: action.payload.data,
       }),
       [createPostThunk.pending]: (state, action) => ({
         ...state,
@@ -43,12 +43,12 @@ const postSlice = createSlice({
       [createPostThunk.fulfilled]: (state, action) => ({
         ...state,
         loading: false,
-        postList: action.payload,
+        postList: action.payload.data,
       }),
       [createPostThunk.rejected]: (state, action) => ({
         ...state,
         loading: false,
-        error: action.payload,
+        error: action.payload.data,
       }),
     }
 })
