@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 function Posts({props}) {
-    const { id, title, content} = props
+    const { id, title } = props
     return (
         <Card>
             <Card.Body>

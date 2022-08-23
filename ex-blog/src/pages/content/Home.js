@@ -1,19 +1,26 @@
-import React,{ useEffect, useState } from 'react'
+import React,{ useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Posts from '../../components/Posts'
+import { getPostsThunk } from '../../modules/reducers/postReducer'
+import store from '../../modules/store'
 
 function Home() {
 
-    const [posts, setPosts] = useState([]);
+  const dispatch = useDispatch()
+  const posts = useSelector(store => store.post.postList.data)
 
-    // 함수 실행 시 최초
-    // + 상태값(setPosts)가 변경될 때마다 실행 => 어디에도 의존하지 않는다는 []을 적어줘야함.
     useEffect(() => {
-        fetch("http://18.191.121.226:8080/post").then(res => res.json()).then(res => {
-            console.log(1, res)
-            setPosts(res)
-        })
+        const fetch = async () => {
+          try {
+            dispatch(getPostsThunk())
+            // console.log(posts.postList.data)
+          } catch(err){
+            console.log(err);
+          }
+        };
+        fetch();
+      }, [])
 
-    }, [])
     return (
         <div>
             {posts.map((post) => (

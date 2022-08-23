@@ -11,7 +11,7 @@ import Home from './pages/content/Home';
 
 function App() {
   return (
-    <div>
+    <>
       <Header />
       <Routes>
         <Route path="/" exact={true} element={<Home/>} />
@@ -21,7 +21,7 @@ function App() {
         <Route path="/joinForm" exact={true} element={<JoinForm/>} />
         <Route path="/updateForm/:id" exact={true} element={<UpdateForm/>} />
       </Routes>
-    </div>
+    </>
   );
 }
 
