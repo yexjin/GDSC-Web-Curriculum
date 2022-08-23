@@ -2,23 +2,22 @@ import React,{ useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Posts from '../../components/Posts'
 import { getPostsThunk } from '../../modules/reducers/postReducer'
-import store from '../../modules/store'
 
 function Home() {
 
   const dispatch = useDispatch()
-  const posts = useSelector(store => store.post.postList.data)
+  const posts = useSelector(state => state.post.postList.data)
 
     useEffect(() => {
-        const fetch = async () => {
+      const fetch = async () => {
           try {
             dispatch(getPostsThunk())
-            // console.log(posts.postList.data)
+            console.log(posts)
           } catch(err){
             console.log(err);
           }
-        };
-        fetch();
+      };
+      fetch();
       }, [])
 
     return (

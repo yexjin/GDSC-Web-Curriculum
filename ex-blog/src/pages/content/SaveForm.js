@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
+import { createPostThunk } from '../../modules/reducers/postReducer'
 
 function SaveForm({props}) {
 
@@ -8,6 +10,8 @@ function SaveForm({props}) {
         content: "",
     })
 
+    const dispatch = useDispatch()
+    
     const changeValue = (e) => {
         setPost({
             ...post,
@@ -17,27 +21,34 @@ function SaveForm({props}) {
 
     const submitPost = (e) => {
         e.preventDefault();
-        fetch("http://18.191.121.226:8080/post", {
-            method: "POST", 
-            headers: {
-                "Content-Type": "application/json; charset=utf-8"
-            },
-            body: JSON.stringify(post)
-        }).then(res => {
-            console.log(1, res)
-            if(res.status === 201) {
-                return res.json()
-            } else {
-                return null
-            }
-        }).then(res => {
-            if(res !== null) {
-                props.history.push("/")
-            } else {
-                alert("글 등록에 실패하였습니다.")
-            }
-        })
+        dispatch(createPostThunk(post))
     }
+
+    // const submitPost = (e) => {
+    //     e.preventDefault();
+    //     fetch("http://18.191.121.226:8080/post", {
+    //         method: "POST", 
+    //         headers: {
+    //             "Content-Type": "application/json; charset=utf-8"
+    //         },
+    //         body: JSON.stringify(post)
+    //     }).then(res => {
+    //         console.log(1, res)
+    //         if(res.status === 201) {
+    //             return res.json()
+    //         } else {
+    //             return null
+    //         }
+    //     }).then(res => {
+    //         if(res !== null) {
+    //             props.history.push("/")
+    //         } else {
+    //             alert("글 등록에 실패하였습니다.")
+    //         }
+    //     })
+    // }
+
+
     return (
         <Form onSubmit= {submitPost}>
         <Form.Group className="mb-3">

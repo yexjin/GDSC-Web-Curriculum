@@ -12,6 +12,11 @@ export const getPostsThunk = createAsyncThunk(
     PostsApi.getPosts
 )
 
+export const createPostThunk = createAsyncThunk(
+    'postSlice/createPostThunk',
+    PostsApi.createPost
+)
+
 const postSlice = createSlice({
     name: 'post',
     initialState,
@@ -27,6 +32,20 @@ const postSlice = createSlice({
         postList: action.payload,
       }),
       [getPostsThunk.rejected]: (state, action) => ({
+        ...state,
+        loading: false,
+        error: action.payload,
+      }),
+      [createPostThunk.pending]: (state, action) => ({
+        ...state,
+        loading: true,
+      }),
+      [createPostThunk.fulfilled]: (state, action) => ({
+        ...state,
+        loading: false,
+        postList: action.payload,
+      }),
+      [createPostThunk.rejected]: (state, action) => ({
         ...state,
         loading: false,
         error: action.payload,
