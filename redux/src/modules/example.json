@@ -1,0 +1,22 @@
+"order" : {
+    ["category" : "",
+    "isImportant" : "",
+    "content": "",
+    createdAt
+    ]
+}
+
+"columns": {
+    "content": [
+        {
+            "key" : "description",
+            "type" : "string",
+            "label" : "내용"
+
+        },
+        {
+            "category":
+        }
+    ]
+
+} 
