@@ -1,5 +1,5 @@
 const urls = {
-    common: "http://localhost:8080"
+    common: "http://3.21.76.223:8080"
   };
   
   export default urls;
